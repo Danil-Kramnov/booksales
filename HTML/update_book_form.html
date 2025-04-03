@@ -1,0 +1,55 @@
+<!-- update_book_form.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Update Book</title>
+  <link rel="stylesheet" href="CSS/index.css">
+</head>
+<body>
+  <h2>Update Book</h2>
+  <form action="update_book.php" method="POST" class="update-book-form">
+
+    <input type="hidden" name="book_id" value="<?php echo htmlspecialchars($book_id); ?>">
+
+    <label for="book_title">Book Title:</label>
+    <input type="text" id="book_title" name="book_title" value="<?php echo htmlspecialchars($book_title); ?>" required>
+
+    <label for="author">Author:</label>
+    <input type="text" id="author" name="author" value="<?php echo htmlspecialchars($author); ?>" required>
+
+    <label for="isbn">ISBN:</label>
+    <input type="text" id="isbn" name="isbn" value="<?php echo htmlspecialchars($isbn); ?>" required>
+
+    <label for="genre_code">Genre Code:</label>
+    <select id="genre_code" name="genre_code" required>
+      <?php
+      try {
+          $pdo = db_connect();
+          $sql = "SELECT * FROM genres";
+          $stmt = $pdo->query($sql);
+          while ($genre = $stmt->fetch()) {
+              $selected = ($genre['genre_code'] == $genre_code) ? 'selected' : '';
+              echo '<option value="' . htmlspecialchars($genre['genre_code']) . '" ' . $selected . '>' . htmlspecialchars($genre['description']) . '</option>';
+          }
+      } catch (PDOException $e) {
+          echo '<option value="">Error loading genres</option>';
+      }
+      ?>
+    </select>
+
+    <label for="price">Price:</label>
+    <input type="text" id="price" name="price" value="<?php echo htmlspecialchars($price); ?>" required>
+
+    <label for="stock_amount">Stock Amount:</label>
+    <input type="text" id="stock_amount" name="stock_amount" value="<?php echo htmlspecialchars($stock_amount); ?>" required>
+
+    <label for="book_status">Book Status:</label>
+    <input type="text" id="book_status" name="book_status" value="<?php echo htmlspecialchars($book_status); ?>" required>
+
+    <input type="submit" name="update_book" value="Update Book">
+  </form>
+  <br>
+  <a href="index.php">Cancel and Return to Home</a>
+</body>
+</html>

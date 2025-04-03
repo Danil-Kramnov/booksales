@@ -1,0 +1,41 @@
+<!-- add_book_form.html -->
+<form action="index.php" method="POST" class="add-book-form">
+    <h2>Add a New Book</h2>
+
+    <label for="cbook_title">Book Title:</label>
+    <input type="text" id="cbook_title" name="cbook_title">
+
+    <label for="cauthor">Author:</label>
+    <input type="text" id="cauthor" name="cauthor">
+
+    <label for="cisbn">ISBN:</label>
+    <input type="text" id="cisbn" name="cisbn">
+
+    <label for="cgenre_code">Genre Code:</label>
+    <select id="genre_code" name="genre_code" required>
+        <?php
+        try {
+            $pdo = db_connect();
+            $sql = "SELECT * FROM genres";
+            $stmt = $pdo->query($sql);
+            while ($genre = $stmt->fetch()) {
+                $selected = ($genre['genre_code'] == $genre_code) ? 'selected' : '';
+                echo '<option value="' . htmlspecialchars($genre['genre_code']) . '" ' . $selected . '>' . htmlspecialchars($genre['description']) . '</option>';
+            }
+        } catch (PDOException $e) {
+            echo '<option value="">Error loading genres</option>';
+        }
+        ?>
+      </select>
+
+    <label for="cprice">Price:</label>
+    <input type="text" id="cprice" name="cprice">
+
+    <label for="cstock_amount">Stock Amount:</label>
+    <input type="text" id="cstock_amount" name="cstock_amount">
+
+    <label for="cbook_status">Book Status:</label>
+    <input type="text" id="cbook_status" name="cbook_status">
+
+    <input type="submit" name="add_book" value="Add Book">
+</form>
