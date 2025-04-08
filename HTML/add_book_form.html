@@ -1,41 +1,59 @@
 <!-- add_book_form.html -->
-<form action="index.php" method="POST" class="add-book-form">
+<form action="./index.php" method="POST" class="add-book-form">
     <h2>Add a New Book</h2>
 
     <label for="cbook_title">Book Title:</label>
-    <input type="text" id="cbook_title" name="cbook_title">
+    <input type="text" id="cbook_title" name="cbook_title" placeholder="Enter a book title...">
 
     <label for="cauthor">Author:</label>
-    <input type="text" id="cauthor" name="cauthor">
+    <input type="text" id="cauthor" name="cauthor" placeholder="Enter an author...">
 
     <label for="cisbn">ISBN:</label>
-    <input type="text" id="cisbn" name="cisbn">
+    <input type="text" id="cisbn" name="cisbn" placeholder="123-1-123456-12-1">
 
-    <label for="cgenre_code">Genre Code:</label>
+    <label for="genre_code">Genre Code:</label>
     <select id="genre_code" name="genre_code" required>
+        <option value="" disabled selected>Select a Genre</option>
         <?php
-        try {
-            $pdo = db_connect();
-            $sql = "SELECT * FROM genres";
-            $stmt = $pdo->query($sql);
-            while ($genre = $stmt->fetch()) {
-                $selected = ($genre['genre_code'] == $genre_code) ? 'selected' : '';
-                echo '<option value="' . htmlspecialchars($genre['genre_code']) . '" ' . $selected . '>' . htmlspecialchars($genre['description']) . '</option>';
+            try {
+                $pdo = db_connect();
+                $sql = "SELECT * FROM genres";
+                $stmt = $pdo->query($sql);
+                while ($genre = $stmt->fetch()) {
+                    $selected = ($genre['genre_code'] == $genre_code) ? 'selected' : '';
+                    echo '<option value="' . htmlspecialchars($genre['genre_code']) . '" ' . $selected . '>' . htmlspecialchars($genre['description']) . '</option>';
+                }
+            } catch (PDOException $e) {
+                echo '<option value="">Error loading genres</option>';
             }
-        } catch (PDOException $e) {
-            echo '<option value="">Error loading genres</option>';
-        }
         ?>
-      </select>
+    </select>
+    
 
     <label for="cprice">Price:</label>
-    <input type="text" id="cprice" name="cprice">
+    <input type="text" id="cprice" name="cprice" placeholder="12.1">
 
     <label for="cstock_amount">Stock Amount:</label>
-    <input type="text" id="cstock_amount" name="cstock_amount">
+    <input type="text" id="cstock_amount" name="cstock_amount" placeholder="1">
 
-    <label for="cbook_status">Book Status:</label>
-    <input type="text" id="cbook_status" name="cbook_status">
+    <label for="book_status">Book Status:</label>
+    <select id="book_status" name="book_status" required>
+        <option value="" disabled selected>Select a Status</option>
+        <?php
+            try {
+                $pdo = db_connect();
+                $sql = "SELECT DISTINCT book_status FROM books"; // Fetch unique statuses
+                $stmt = $pdo->query($sql);
+                while ($book = $stmt->fetch()) {
+                    $selected = ($book['book_status'] == $book_status) ? 'selected' : '';
+                    echo '<option value="' . htmlspecialchars($book['book_status']) . '" ' . $selected . '>' . htmlspecialchars($book['book_status']) . '</option>';
+                }
+            } catch (PDOException $e) {
+                echo '<option value="">Error loading book status</option>';
+            }
+        ?>
+    </select>
+
 
     <input type="submit" name="add_book" value="Add Book">
 </form>

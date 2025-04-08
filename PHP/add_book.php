@@ -1,5 +1,6 @@
 <!-- add_book.php -->
 <?php
+session_start();
 include_once 'db_connect.php';
 // include '../HTML/add_book_header.html';
 

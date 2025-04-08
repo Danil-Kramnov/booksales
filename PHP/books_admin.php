@@ -1,6 +1,7 @@
 <!-- books_admin.php -->
-<?php 
-require_once 'PHP/db_connect.php'; 
+<?php
+session_start(); 
+require_once 'db_connect.php'; 
 ?>
 
 <!DOCTYPE html>
@@ -8,45 +9,30 @@ require_once 'PHP/db_connect.php';
 <head>
   <meta charset="UTF-8">
   <title>Online Bookstore</title>
-  <link rel="stylesheet" href="CSS/index.css">
+  <link rel="stylesheet" href="../CSS/index.css">
 </head>
 <body>
 
   <nav>
     <div class="logo">BookStore</div>
-
-    <form action="index.php" method="POST" class="search-bar">
-      <input type="text" name="cbook_title" placeholder="Search for books...">
-      <button type="submit">Search</button>
-    </form>
-
-    <div class="nav-buttons">
-      <button href="">Help</button> <!-- just a wiki page with description of what you can do using this system  -->
-      <button href="accounts_admin.php">Account</button> <!-- links on hover: Update details, Your Orders (data table ordered_books)  -->
-      <button href="PHP/books_admin.php">Books Admin</button> <!-- heres one page with table of books. In table Action buttons: "Update", "Delete"  -->
-      <button href="">Basket</button> <!-- items that saved during user session -->
-    </div>
   </nav>
 
   <nav class="genre-bar">
-    <ul>
 
-      <li><a href="">Detective</a></li>
-      <li><a href="">Sci-fi</a></li>
-      <li><a href="">History</a></li>
-      <li><a href="">Fantasy</a></li>
-      <li><a href="">Romance</a></li>
-      <li><a href="">Poems</a></li>
-      <li><a href="">Biography</a></li>
-      <li><a href="">Non-fiction</a></li>
-      <li><a href="">Fiction</a></li>
+    <ul>
+      <li><a href="../index.php">Home</a></li> <!-- home page -->
+      <li><a href="">Help</a></li> <!-- wiki page -->
+      <li><a href="accounts_admin.php">Account</a></li> <!-- drop down menu on hover: Update details, Your Orders (data table ordered_books)  -->
+      <li><a href="books_admin.php">Books Admin</a></li>
+      <li><a href="">Basket</a></li> <!-- items that saved during user session -->
     </ul>
+
   </nav>
 
   <main>
-    <?php include 'PHP/select_book.php'; ?>
-    <?php include 'HTML/add_book_form.html'; ?>
-    <?php include 'HTML/update_book_form.html'; ?>
+    <?php include 'select_book.php'; ?>
+    <?php include '../HTML/add_book_form.html'; ?>
+    <?php //include '../HTML/update_book_form.html'; ?>
 
     <?php
     if (isset($_POST['add_book'])) {
@@ -89,11 +75,11 @@ require_once 'PHP/db_connect.php';
     ?>
 
     <?php 
-      include 'PHP/delete_book.php'; 
+      include 'delete_book.php'; 
     ?>
 
     <?php 
-      include 'PHP/update_book.php'; 
+      include 'update_book.php'; 
     ?>
 
     <?php
@@ -131,7 +117,7 @@ require_once 'PHP/db_connect.php';
         echo "      <button type='submit'>Update</button>";
         echo "    </form>";
 
-        echo "    <form action='PHP/delete_book.php' method='POST' style='display:inline-block;'>";
+        echo "    <form action='delete_book.php' method='POST' style='display:inline-block;'>";
         echo "      <input type='hidden' name='cid' value='" . htmlspecialchars($row['book_id']) . "'>";
         echo "      <input type='hidden' name='delete_book' value='1'>";
 

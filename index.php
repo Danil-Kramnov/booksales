@@ -13,6 +13,7 @@ require_once 'PHP/db_connect.php';
 <body>
 
   <nav>
+
     <div class="logo">BookStore</div>
 
     <form action="index.php" method="POST" class="search-bar">
@@ -24,6 +25,7 @@ require_once 'PHP/db_connect.php';
 
   <nav class="genre-bar">
     <ul>
+      <li><a href="index.php">Home</a></li> <!-- home page -->
       <li><a href="">Help</a></li> <!-- wiki page -->
       <li><a href="PHP/accounts_admin.php">Account</a></li> <!-- drop down menu on hover: Update details, Your Orders (data table ordered_books)  -->
       <li><a href="PHP/books_admin.php">Books Admin</a></li>
@@ -32,6 +34,8 @@ require_once 'PHP/db_connect.php';
   </nav>
 
   <main>
+
+  <h1> WELCOME TO HOME PAGE </h1>
 
   </main>
 

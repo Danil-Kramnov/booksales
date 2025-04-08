@@ -1,6 +1,7 @@
 <!-- update_book.php -->
 <?php
-include_once 'PHP/db_connect.php';
+session_start();
+include_once 'db_connect.php';
 
 if (isset($_POST['update_book'])) {
 
@@ -72,7 +73,7 @@ if (isset($_POST['update_book'])) {
         echo "Error fetching book: " . $e->getMessage();
         exit();
     }
-    include 'update_book_form.html';
+    include '../HTML/update_book_form.html';
 } else {
     echo "Invalid request";
 }

@@ -1,8 +1,9 @@
 <!-- delete_book.php -->
 <?php
+session_start();
 include_once 'db_connect.php';
 
-if (isset($_POST['cid']) && isset($_POST['delete_book'])) {
+if (isset($_POST['cid'])) {
     try {
         $pdo = db_connect();
 
@@ -23,7 +24,7 @@ if (isset($_POST['cid']) && isset($_POST['delete_book'])) {
             $book = $stmt->fetch();
 
             echo "You deleted the book: <strong>" . htmlspecialchars($book['book_title']) . "</strong> by " . htmlspecialchars($book['author']) . ".<br>";
-            echo 'Click <a href="../index.php">here</a> to go back.';
+            echo 'Click <a href="books_admin.php">here</a> to go back.';
         } else {
             $sql = 'SELECT * FROM books WHERE book_id = :cid';
             $stmt = $pdo->prepare($sql);
@@ -39,7 +40,7 @@ if (isset($_POST['cid']) && isset($_POST['delete_book'])) {
                         <input type="submit" name="delete_book" value="Yes, Delete">
                       </form>';
                 
-                echo '<form action="../index.php" method="post">
+                echo '<form action="books_admin.php" method="post">
                         <input type="submit" value="No, go back">
                       </form>';
             } else {
