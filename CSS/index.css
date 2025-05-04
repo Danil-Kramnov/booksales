@@ -1,112 +1,233 @@
 body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background-color: #ffffff;
-  }
-/* ========== Main Navigation Bar ========== */
-  nav {
-    display: flex;
-    align-items: center;
-    background-color: #f2f2f2;
-    padding: 0 20px;
-    height: 60px;
-  }
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #ffffff;
+}
 
-  .logo {
-    width: 10%;
-    font-size: 1.4rem;
-    font-weight: bold;
-    color: #333;
-    display: flex;
-    align-items: center;
-  }
+/* ========== index.php ========== */
+/* nav bar */
+.main-nav {
+  font-family: Arial, sans-serif;
+}
 
-  .search-bar {
-    width: 10%;
-    display: flex;
-    align-items: stretch;
-    position: relative; 
-    margin: 0 20px;
-  }
+/* top bar */
+.top-bar {
+  display: flex;
+  align-items: center;
+  background-color: #f2f2f2;
+  padding: 0 20px;
+  height: 60px;
+}
 
+.logo {
+  width: 10%;
+  font-size: 1.4rem;
+  font-weight: bold;
+  color: #333;
+  display: flex;
+  align-items: center;
+}
 
-  .search-bar button {
-    border: none;
-    background-color: #ff6b00;
-    color: #fff;
-    padding: 8px 16px;
-    font-size: 1rem;
-    cursor: pointer;
-    border-radius: 0 4px 4px 0;
-    transition: background-color 0.3s ease;
-  }
+.search-bar {
+  width: 10%;
+  display: flex;
+  align-items: stretch;
+  position: relative;
+  margin: 0 20px;
+}
 
-  .search-bar button:hover {
-    background-color: #e55900;
-  }
+.search-bar input {
+  flex: 1;
+  padding: 8px 12px;
+  border: 1px solid #ddd;
+  border-radius: 4px 0 0 4px;
+  font-size: 1rem;
+}
 
-  
- /* ========== Nav Links ========== */
+.search-bar button {
+  border: none;
+  background-color: #ff6b00;
+  color: #fff;
+  padding: 8px 16px;
+  font-size: 1rem;
+  cursor: pointer;
+  border-radius: 0 4px 4px 0;
+  transition: background-color 0.3s ease;
+}
 
+.search-bar button:hover {
+  background-color: #e55900;
+}
 
-  /* ========== Genre Bar ========== */
-  nav.genre-bar {
-    background-color: #fff;
-    padding: 2px 0;
-    display: flex;
-    justify-content: center;
-  }
+/* menu bar */
+.menu-bar {
+  background-color: #fff;
+  padding: 10px 0;
+  display: flex;
+  justify-content: center;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
 
-  .genre-bar ul {
-    margin: 0;
-    padding: 0;
-    display: flex;
-    gap: 20px;
-  }
+.nav-buttons {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
 
-  .genre-bar li {
-    list-style: none;
-  }
+.nav-btn {
+  text-decoration: none;
+  color: #333;
+  font-weight: bold;
+  background: none;
+  border: none;
+  padding: 10px 15px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: color 0.3s;
+}
 
-  .genre-bar a {
-    text-decoration: none;
-    color: #333;
-    font-weight: bold;
-    transition: color 0.3s;
-  }
+.nav-btn:hover {
+  color: #ff6b00;
+}
 
-  .genre-bar a:hover {
-    color: #ff6b00;
-  }
+/* dropdown */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
 
+.dropbtn {
+  background-color: transparent;
+  color: #333;
+  padding: 10px 15px;
+  font-size: 1rem;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+}
 
-  main {
-    min-height: 80vh;
-    padding: 20px;
-  }
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 200px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
 
-  footer {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background-color: #f2f2f2;
-    border-top: 1px solid #ccc;
-    text-align: center;
-    padding: 10px;
-  }
+.dropdown-content a {
+  color: #333;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
 
-  footer a {
-    text-decoration: none;
-    color: #333;
-    margin-right: 10px;
-  }
+.dropdown-content a:hover {
+  background-color: #f1f1f1;
+  color: #ff6b00;
+}
 
-  footer a:hover {
-    color: #ff6b00;
-  }
+.dropdown:hover .dropdown-content {
+  display: block;
+}
 
-  /* ========== Add Book Form ========== */
+.dropdown:hover .dropbtn {
+  color: #ff6b00;
+}
+
+/* main and footer */
+main {
+  min-height: 80vh;
+  padding: 20px;
+}
+
+footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: #f2f2f2;
+  border-top: 1px solid #ccc;
+  text-align: center;
+  padding: 10px;
+}
+
+footer a {
+  text-decoration: none;
+  color: #333;
+  margin-right: 10px;
+}
+
+footer a:hover {
+  color: #ff6b00;
+}
+
+/* book galery */
+.book-gallery {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  gap: 20px;
+  padding: 20px;
+}
+
+.book-card {
+  width: calc(25% - 20px);
+  margin-bottom: 20px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 15px;
+  text-align: center;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  transition: transform 0.3s;
+}
+
+.book-card:hover {
+  transform: translateY(-5px);
+}
+
+.book-image {
+  height: 200px;
+  width: 100%;
+  object-fit: contain;
+  margin-bottom: 15px;
+}
+
+.book-title {
+  font-weight: bold;
+  margin-bottom: 5px;
+  font-size: 1.1em;
+}
+
+.book-author {
+  color: #666;
+  margin-bottom: 10px;
+  font-style: italic;
+}
+
+.book-price {
+  font-weight: bold;
+  color: #2a7d2a;
+  margin-bottom: 15px;
+  font-size: 1.2em;
+}
+
+.add-to-basket {
+  background-color: #e55900;
+  color: white;
+  border: none;
+  padding: 8px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s;
+}
+
+.add-to-basket:hover {
+  background-color: #da7739;
+}
+
+  /* ========== add_book_form.html ========== */
   .add-book-form {
     display: flex;
     flex-direction: column;
@@ -128,7 +249,7 @@ body {
     font-weight: bold;
   }
 
-    /* ========== Update Book Form ========== */
+     /* ========== uodate_book_form.html ========== */
     .update-book-form {
       display: flex;
       flex-direction: column;
@@ -150,7 +271,102 @@ body {
       font-weight: bold;
     }
 
-  /* ========== Books Table ========== */
+    .update-form {
+      background-color: #f9f9f9;
+      padding: 20px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      margin-bottom: 20px;
+    }
+    
+    .update-form div {
+      margin-bottom: 10px;
+    }
+    
+    .update-form label {
+      display: inline-block;
+      width: 120px;
+    }
+    
+    .update-form input {
+      padding: 5px;
+      width: 300px;
+    }
+    
+    .success-message {
+      background-color: #dff0d8;
+      color: #3c763d;
+      padding: 10px;
+      border-radius: 5px;
+      margin-bottom: 15px;
+    }
+    
+    .error-message {
+      background-color: #f2dede;
+      color: #a94442;
+      padding: 10px;
+      border-radius: 5px;
+      margin-bottom: 15px;
+    }
+
+    .success-message {
+      background-color: #dff0d8;
+      color: #3c763d;
+      padding: 10px;
+      border-radius: 5px;
+      margin-bottom: 15px;
+    }
+    
+    .error-message {
+      background-color: #f2dede;
+      color: #a94442;
+      padding: 10px;
+      border-radius: 5px;
+      margin-bottom: 15px;
+    }
+    
+    .update-form, .delete-confirmation {
+      background-color: #f9f9f9;
+      padding: 20px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      margin-bottom: 20px;
+    }
+    
+    .update-form div {
+      margin-bottom: 10px;
+    }
+    
+    .update-form label {
+      display: inline-block;
+      width: 120px;
+    }
+    
+    .update-form input {
+      padding: 5px;
+      width: 300px;
+    }
+    
+    .delete-confirmation {
+      background-color: #fcf8e3;
+      border-color: #faebcc;
+    }
+    
+    .delete-confirmation p {
+      color: #8a6d3b;
+      font-size: 16px;
+      margin-bottom: 15px;
+    }
+    
+    .button-group {
+      margin-top: 15px;
+    }
+    
+    .button-group button {
+      margin-right: 10px;
+    }
+
+  /* available books */
   .books-table {
     width: 90%;
     margin: 20px auto;
@@ -167,4 +383,106 @@ body {
     background-color: #f2f2f2;
   }
   
+  /* ==========  basket.php ========== */
+  .basket-container {
+    padding: 20px;
+}
+
+.basket-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+.basket-table th, .basket-table td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.basket-table th {
+    background-color: #f2f2f2;
+}
+
+.book-info {
+    display: flex;
+    align-items: center;
+}
+
+.book-thumbnail {
+    width: 60px;
+    height: 80px;
+    object-fit: cover;
+    margin-right: 15px;
+}
+
+.quantity-input {
+    width: 50px;
+    padding: 5px;
+    text-align: center;
+}
+
+.update-btn, .remove-btn {
+    padding: 5px 10px;
+    margin: 0 5px;
+    background-color: #f8f9fa;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.remove-btn {
+    background-color: #f8f9fa;
+    color: #e74c3c;
+}
+
+.basket-summary {
+    background-color: #f8f9fa;
+    padding: 20px;
+    border-radius: 5px;
+    margin-top: 20px;
+}
+
+.summary-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.total-row {
+    font-size: 1.2em;
+    font-weight: bold;
+    border-top: 1px solid #ddd;
+    padding-top: 10px;
+}
+
+.checkout-btn {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    background-color: #e55900;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.1em;
+    font-weight: bold;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    margin-top: 20px;
+}
+
+.continue-shopping {
+    display: block;
+    text-align: center;
+    margin-top: 15px;
+}
+
+.empty-basket {
+    text-align: center;
+    padding: 40px;
+}
+    /* ==========  checkout.php ========== */
+
+
   
